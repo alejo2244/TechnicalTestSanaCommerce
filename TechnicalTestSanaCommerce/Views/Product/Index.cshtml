@@ -1,0 +1,121 @@
+﻿@{
+    ViewBag.Title = "Product Page";
+}
+<div class="row">
+    <div class="col-md-4">
+        <h2>Products</h2>
+    </div>
+    <div class="col-md-4">
+        <h3>Storage</h3>
+        <div class="form-group">
+            <select class="form-control" id="selStorage">
+                <option value="1">CSV</option>
+                <option value="2">MEMORY</option>
+            </select>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <h3>Path File</h3>
+        <div class="form-group">
+            <input type="text" maxlength="200" class="form-control" id="txtPath" placeholder="Enter the path file" value="C:\\Users\\Alejo\\Desktop\\OUT\\products.csv">
+        </div>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-12">
+        <table class="table table-hover">
+            <thead class="thead-dark">
+                <tr>
+                    <th colspan="4"><button type="button" data-toggle="modal" id="btnAddProduct" data-target="#modalProduct" class="btn btn-success">Add Product</button></th>
+                </tr>
+                <tr>
+                    <th scope="col">#</th>
+                    <th scope="col">Number</th>
+                    <th scope="col">Title</th>
+                    <th scope="col">Price</th>
+                    <th scope="col" colspan="2">Options</th>
+                </tr>
+            </thead>
+            <tbody id="bodyProducts">
+            </tbody>
+        </table>
+    </div>
+</div>
+
+<div class="modal fade" id="modalProduct" tabindex="-1" role="dialog" aria-labelledby="modalProductLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form id="formProduct">
+                    <div class="form-group">
+                        <input type="hidden" id="txtIdProduct" />
+                        <label for="Number">Number</label>
+                        <input type="number" class="form-control" id="txtNumber" placeholder="Enter product number">
+                    </div>
+                    <div class="form-group">
+                        <label for="Title">Title</label>
+                        <input type="text" maxlength="50" class="form-control" id="txtTitle" placeholder="Enter product title">
+                    </div>
+                    <div class="form-group">
+                        <label for="Price">Price</label>
+                        <input type="number" class="form-control" id="txtPrice" placeholder="Enter product Price">
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-success" id="btnSaveProduct">Save changes</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="confirmDeleteModal" tabindex="-1" role="dialog" aria-labelledby="confirmDeleteModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    ¿You want to delete the product?
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-danger" data-dismiss="modal">NO</button>
+                <button type="button" class="btn btn-success" id="btnDeleteProduct">YES</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="modal fade" id="errorPathModal" tabindex="-1" role="dialog" aria-labelledby="errorPathModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <p>
+                    ¡You must complete the path field!
+                </p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+@Scripts.Render("~/bundles/product")
